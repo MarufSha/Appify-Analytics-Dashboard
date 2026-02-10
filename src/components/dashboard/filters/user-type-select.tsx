@@ -18,7 +18,7 @@ export default function UserTypeSelect({
 }) {
   return (
     <Select value={value} onValueChange={(v) => onChange(v as UserTypeKey)}>
-      <SelectTrigger className="w-40">
+      <SelectTrigger className="w-40 cursor-pointer">
         <SelectValue placeholder="User type" />
       </SelectTrigger>
       <SelectContent>

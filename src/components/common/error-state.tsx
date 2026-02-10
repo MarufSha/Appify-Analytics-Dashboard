@@ -23,7 +23,7 @@ export default function ErrorState({
         <p className="text-sm text-muted-foreground">{message}</p>
 
         {onRetry ? (
-          <Button variant="outline" onClick={() => onRetry()}>
+          <Button className="cursor-pointer" variant="outline" onClick={() => onRetry()}>
             <RefreshCw className="mr-2 h-4 w-4" />
             Retry
           </Button>

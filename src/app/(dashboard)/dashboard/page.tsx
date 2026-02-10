@@ -119,13 +119,13 @@ const Dashboard = () => {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <FilterBar />
         <div className="flex items-center gap-2">
-          <Button variant="outline" onClick={refresh}>
+          <Button className="cursor-pointer" variant="outline" onClick={refresh}>
             <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button>
+              <Button className="cursor-pointer">
                 <Download className="mr-2 h-4 w-4" />
                 Export
               </Button>

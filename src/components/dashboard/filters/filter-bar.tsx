@@ -95,7 +95,7 @@ export default function FilterBar() {
       <div className="flex flex-wrap items-center gap-2">
         <DateRangeSelect value={dateRange} onChange={onRangeChange} />
         <UserTypeSelect value={userType} onChange={onTypeChange} />
-        <Button variant="outline" onClick={reset}>
+        <Button className="cursor-pointer" variant="outline" onClick={reset}>
           <RotateCcw className="mr-2 h-4 w-4" />
           Reset
         </Button>

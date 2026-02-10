@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Search, User} from "lucide-react";
+import { Menu, Search, User } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -26,15 +26,18 @@ import { useUiStore } from "@/store/ui-store";
 import type { RoleKey } from "@/types/dashboard";
 
 export default function Topbar() {
-  const ThemeToggle = dynamic(() => import("@/components/common/theme-toggle"), {
-  ssr: false,
-});
+  const ThemeToggle = dynamic(
+    () => import("@/components/common/theme-toggle"),
+    {
+      ssr: false,
+    },
+  );
   const router = useRouter();
   const pathname = usePathname();
   const sp = useSearchParams();
   const role = useUiStore((s) => s.role);
   const setRole = useUiStore((s) => s.setRole);
-  
+
   useEffect(() => {
     const q = sp.get("role");
     if (q === "admin" || q === "manager") {
@@ -56,7 +59,11 @@ export default function Topbar() {
       <div className="flex items-center gap-3 px-4 py-3 md:px-6">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden cursor-pointer"
+            >
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -77,19 +84,23 @@ export default function Topbar() {
         </div>
         <div className="hidden md:block">
           <Select value={role} onValueChange={onRoleChange}>
-            <SelectTrigger className="w-[150px]">
+            <SelectTrigger className="w-[150px] cursor-pointer">
               <SelectValue placeholder="Role" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="admin">Admin</SelectItem>
-              <SelectItem value="manager">Manager</SelectItem>
+              <SelectItem value="admin" className="cursor-pointer">
+                Admin
+              </SelectItem>
+              <SelectItem value="manager" className="cursor-pointer">
+                Manager
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
         <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="gap-2">
+            <Button variant="ghost" className="gap-2 cursor-pointer">
               <Avatar className="h-7 w-7">
                 <AvatarFallback className="text-xs">U</AvatarFallback>
               </Avatar>

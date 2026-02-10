@@ -18,7 +18,7 @@ export default function DateRangeSelect({
 }) {
   return (
     <Select value={value} onValueChange={(v) => onChange(v as DateRangeKey)}>
-      <SelectTrigger className="w-40">
+      <SelectTrigger className="w-40 cursor-pointer">
         <SelectValue placeholder="Date range" />
       </SelectTrigger>
       <SelectContent>
