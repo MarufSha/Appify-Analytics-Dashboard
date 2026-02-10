@@ -1,0 +1,257 @@
+{
+  "kpis": { "revenue": 0, "orders": 0, "users": 0, "conversionRate": 0 },
+
+  "dailyTimeseries": [
+    {
+      "date": "2026-02-01",
+      "revenue": 12000,
+      "orders": 82,
+      "revenueNew": 4300,
+      "revenueReturning": 7700,
+      "ordersNew": 31,
+      "ordersReturning": 51
+    },
+    {
+      "date": "2026-02-02",
+      "revenue": 14800,
+      "orders": 94,
+      "revenueNew": 5300,
+      "revenueReturning": 9500,
+      "ordersNew": 35,
+      "ordersReturning": 59
+    },
+    {
+      "date": "2026-02-03",
+      "revenue": 13250,
+      "orders": 88,
+      "revenueNew": 4700,
+      "revenueReturning": 8550,
+      "ordersNew": 33,
+      "ordersReturning": 55
+    },
+    {
+      "date": "2026-02-04",
+      "revenue": 16100,
+      "orders": 103,
+      "revenueNew": 5900,
+      "revenueReturning": 10200,
+      "ordersNew": 39,
+      "ordersReturning": 64
+    },
+    {
+      "date": "2026-02-05",
+      "revenue": 15500,
+      "orders": 97,
+      "revenueNew": 5600,
+      "revenueReturning": 9900,
+      "ordersNew": 37,
+      "ordersReturning": 60
+    },
+    {
+      "date": "2026-02-06",
+      "revenue": 17800,
+      "orders": 112,
+      "revenueNew": 6500,
+      "revenueReturning": 11300,
+      "ordersNew": 43,
+      "ordersReturning": 69
+    },
+    {
+      "date": "2026-02-07",
+      "revenue": 16900,
+      "orders": 106,
+      "revenueNew": 6100,
+      "revenueReturning": 10800,
+      "ordersNew": 41,
+      "ordersReturning": 65
+    },
+
+    {
+      "date": "2026-01-25",
+      "revenue": 16600,
+      "orders": 110,
+      "revenueNew": 6400,
+      "revenueReturning": 10200,
+      "ordersNew": 43,
+      "ordersReturning": 67
+    },
+    {
+      "date": "2026-01-26",
+      "revenue": 17200,
+      "orders": 114,
+      "revenueNew": 6600,
+      "revenueReturning": 10600,
+      "ordersNew": 44,
+      "ordersReturning": 70
+    },
+    {
+      "date": "2026-01-27",
+      "revenue": 16000,
+      "orders": 107,
+      "revenueNew": 6200,
+      "revenueReturning": 9800,
+      "ordersNew": 42,
+      "ordersReturning": 65
+    },
+    {
+      "date": "2026-01-28",
+      "revenue": 17800,
+      "orders": 118,
+      "revenueNew": 6900,
+      "revenueReturning": 10900,
+      "ordersNew": 46,
+      "ordersReturning": 72
+    },
+    {
+      "date": "2026-01-29",
+      "revenue": 16900,
+      "orders": 113,
+      "revenueNew": 6500,
+      "revenueReturning": 10400,
+      "ordersNew": 44,
+      "ordersReturning": 69
+    },
+    {
+      "date": "2026-01-30",
+      "revenue": 18100,
+      "orders": 120,
+      "revenueNew": 7100,
+      "revenueReturning": 11000,
+      "ordersNew": 47,
+      "ordersReturning": 73
+    },
+    {
+      "date": "2026-01-31",
+      "revenue": 17500,
+      "orders": 116,
+      "revenueNew": 6800,
+      "revenueReturning": 10700,
+      "ordersNew": 45,
+      "ordersReturning": 71
+    }
+  ],
+
+  "monthlyTimeseries": [
+    {
+      "date": "2025-01-01",
+      "revenue": 280000,
+      "orders": 2100,
+      "revenueNew": 98000,
+      "revenueReturning": 182000,
+      "ordersNew": 780,
+      "ordersReturning": 1320
+    },
+    {
+      "date": "2025-02-01",
+      "revenue": 295000,
+      "orders": 2250,
+      "revenueNew": 108000,
+      "revenueReturning": 187000,
+      "ordersNew": 860,
+      "ordersReturning": 1390
+    },
+    {
+      "date": "2025-03-01",
+      "revenue": 310000,
+      "orders": 2400,
+      "revenueNew": 112000,
+      "revenueReturning": 198000,
+      "ordersNew": 900,
+      "ordersReturning": 1500
+    },
+    {
+      "date": "2025-04-01",
+      "revenue": 305000,
+      "orders": 2350,
+      "revenueNew": 109000,
+      "revenueReturning": 196000,
+      "ordersNew": 880,
+      "ordersReturning": 1470
+    },
+    {
+      "date": "2025-05-01",
+      "revenue": 325000,
+      "orders": 2520,
+      "revenueNew": 118000,
+      "revenueReturning": 207000,
+      "ordersNew": 940,
+      "ordersReturning": 1580
+    },
+    {
+      "date": "2025-06-01",
+      "revenue": 340000,
+      "orders": 2650,
+      "revenueNew": 123000,
+      "revenueReturning": 217000,
+      "ordersNew": 990,
+      "ordersReturning": 1660
+    },
+    {
+      "date": "2025-07-01",
+      "revenue": 360000,
+      "orders": 2790,
+      "revenueNew": 131000,
+      "revenueReturning": 229000,
+      "ordersNew": 1040,
+      "ordersReturning": 1750
+    },
+    {
+      "date": "2025-08-01",
+      "revenue": 355000,
+      "orders": 2720,
+      "revenueNew": 128000,
+      "revenueReturning": 227000,
+      "ordersNew": 1010,
+      "ordersReturning": 1710
+    },
+    {
+      "date": "2025-09-01",
+      "revenue": 370000,
+      "orders": 2880,
+      "revenueNew": 135000,
+      "revenueReturning": 235000,
+      "ordersNew": 1070,
+      "ordersReturning": 1810
+    },
+    {
+      "date": "2025-10-01",
+      "revenue": 390000,
+      "orders": 3020,
+      "revenueNew": 142000,
+      "revenueReturning": 248000,
+      "ordersNew": 1120,
+      "ordersReturning": 1900
+    },
+    {
+      "date": "2025-11-01",
+      "revenue": 410000,
+      "orders": 3180,
+      "revenueNew": 150000,
+      "revenueReturning": 260000,
+      "ordersNew": 1180,
+      "ordersReturning": 2000
+    },
+    {
+      "date": "2025-12-01",
+      "revenue": 450000,
+      "orders": 3500,
+      "revenueNew": 165000,
+      "revenueReturning": 285000,
+      "ordersNew": 1300,
+      "ordersReturning": 2200
+    }
+  ],
+
+  "userBreakdown": [
+    { "type": "Free", "value": 62 },
+    { "type": "Premium", "value": 28 },
+    { "type": "Enterprise", "value": 10 }
+  ],
+
+  "trafficSources": [
+    { "source": "Organic", "value": 44 },
+    { "source": "Paid", "value": 27 },
+    { "source": "Social", "value": 18 },
+    { "source": "Referral", "value": 11 }
+  ]
+}
