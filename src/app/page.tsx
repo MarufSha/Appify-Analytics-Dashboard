@@ -1,3 +1,4 @@
-export const page = () => {
-  return <div>Shh.... you are not supposed to be here</div>;
+import { redirect } from "next/navigation";
+export const Homepage = () => {
+  redirect("/dashboard");
 };
