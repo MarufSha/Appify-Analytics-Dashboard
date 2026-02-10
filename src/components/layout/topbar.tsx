@@ -24,14 +24,11 @@ import {
 } from "@/components/ui/select";
 import { useUiStore } from "@/store/ui-store";
 import type { RoleKey } from "@/types/dashboard";
+const ThemeToggle = dynamic(() => import("@/components/common/theme-toggle"), {
+  ssr: false,
+});
 
 export default function Topbar() {
-  const ThemeToggle = dynamic(
-    () => import("@/components/common/theme-toggle"),
-    {
-      ssr: false,
-    },
-  );
   const router = useRouter();
   const pathname = usePathname();
   const sp = useSearchParams();
@@ -41,9 +38,9 @@ export default function Topbar() {
   useEffect(() => {
     const q = sp.get("role");
     if (q === "admin" || q === "manager") {
-      setRole(q);
+      setRole(q as RoleKey);
     }
-  }, []);
+  }, [sp, setRole]);
 
   function onRoleChange(v: string) {
     const next = v as RoleKey;
@@ -82,6 +79,7 @@ export default function Topbar() {
             />
           </div>
         </div>
+
         <div className="hidden md:block">
           <Select value={role} onValueChange={onRoleChange}>
             <SelectTrigger className="w-[150px] cursor-pointer">

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useDashboardStore, useDashboardView } from "@/store/dashboard-store";
-
+import { Suspense } from "react";
 import FilterBar from "@/components/dashboard/filters/filter-bar";
 import KpiGrid from "@/components/dashboard/kpis/kpi-grid";
 import { useUiStore } from "@/store/ui-store";
@@ -117,9 +117,19 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <FilterBar />
+        <Suspense
+          fallback={
+            <div className="h-10 w-[360px] rounded-md bg-muted animate-pulse" />
+          }
+        >
+          <FilterBar />
+        </Suspense>
         <div className="flex items-center gap-2">
-          <Button className="cursor-pointer" variant="outline" onClick={refresh}>
+          <Button
+            className="cursor-pointer"
+            variant="outline"
+            onClick={refresh}
+          >
             <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
@@ -176,7 +186,7 @@ const Dashboard = () => {
         {role === "admin" ? (
           <TrafficSourceChart data={view.trafficSources} />
         ) : (
-          <div className="flex rounded-lg border bg-card p-6 text-semibold text-muted-foreground justify-center items-center">
+          <div className="flex rounded-lg border bg-card p-6 font-semibold text-muted-foreground justify-center items-center">
             Traffic Sources is available for Admin role.
           </div>
         )}
