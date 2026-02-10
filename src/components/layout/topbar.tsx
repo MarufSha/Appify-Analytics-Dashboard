@@ -12,8 +12,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
+import dynamic from "next/dynamic";
 export default function Topbar() {
+  const ThemeToggle = dynamic(
+    () => import("@/components/common/theme-toggle"),
+    {
+      ssr: false,
+    },
+  );
   return (
     <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
       <div className="flex items-center gap-3 px-4 py-3 md:px-6">
@@ -33,14 +39,10 @@ export default function Topbar() {
         <div className="flex-1">
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              placeholder="Search"
-              className="pl-9"
-              disabled
-            />
+            <Input placeholder="Search" className="pl-9" disabled />
           </div>
         </div>
-
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="gap-2">
