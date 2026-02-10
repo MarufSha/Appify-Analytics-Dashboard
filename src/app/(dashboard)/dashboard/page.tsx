@@ -5,7 +5,7 @@ import { useDashboardStore, useDashboardView } from "@/store/dashboard-store";
 
 import FilterBar from "@/components/dashboard/filters/filter-bar";
 import KpiGrid from "@/components/dashboard/kpis/kpi-grid";
-
+import { useUiStore } from "@/store/ui-store";
 import RevenueLineChart from "@/components/dashboard/charts/revenue-line-chart";
 import OrdersBarChart from "@/components/dashboard/charts/orders-bar-chart";
 import UsersPieChart from "@/components/dashboard/charts/users-pie-chart";
@@ -19,6 +19,7 @@ const Dashboard = () => {
   const isLoading = useDashboardStore((s) => s.isLoading);
   const error = useDashboardStore((s) => s.error);
   const fetchDashboard = useDashboardStore((s) => s.fetchDashboard);
+  const role = useUiStore((s) => s.role);
 
   useEffect(() => {
     fetchDashboard();
@@ -41,7 +42,13 @@ const Dashboard = () => {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <UsersPieChart data={view.userBreakdown} />
-        <TrafficSourceChart data={view.trafficSources} />
+        {role === "admin" ? (
+          <TrafficSourceChart data={view.trafficSources} />
+        ) : (
+          <div className="flex rounded-lg border bg-card p-6 text-semibold text-muted-foreground justify-center items-center">
+            Traffic Sources is available for Admin role.
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import dynamic from "next/dynamic";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useUiStore } from "@/store/ui-store";
+import type { RoleKey } from "@/types/dashboard";
+
 export default function Topbar() {
+  const role = useUiStore((s) => s.role);
+  const setRole = useUiStore((s) => s.setRole);
+
+  function onRoleChange(v: string) {
+    setRole(v as RoleKey);
+  }
+
   const ThemeToggle = dynamic(
     () => import("@/components/common/theme-toggle"),
     {
@@ -41,6 +58,17 @@ export default function Topbar() {
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input placeholder="Search" className="pl-9" disabled />
           </div>
+        </div>
+        <div className="hidden md:block">
+          <Select value={role} onValueChange={onRoleChange}>
+            <SelectTrigger className="w-[150px]">
+              <SelectValue placeholder="Role" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="manager">Manager</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <ThemeToggle />
         <DropdownMenu>

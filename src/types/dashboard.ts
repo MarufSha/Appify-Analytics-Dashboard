@@ -50,3 +50,4 @@ export type DashboardData = {
 
 export type DateRangeKey = "7d" | "30d" | "12m";
 export type UserTypeKey = "all" | "new" | "returning";
+export type RoleKey = "admin" | "manager";
