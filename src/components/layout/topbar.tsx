@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 export default function Topbar() {
   return (
     <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
-      <div className="flex items-center gap-3 px-4 py-5 md:px-6">
+      <div className="flex items-center gap-3 px-4 py-3 md:px-6">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
