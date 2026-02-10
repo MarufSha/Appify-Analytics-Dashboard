@@ -24,7 +24,7 @@ export default function DateRangeSelect({
       <SelectContent>
         <SelectItem value="7d">Last 7 days</SelectItem>
         <SelectItem value="30d">Last 30 days</SelectItem>
-        <SelectItem value="90d">Last 12 months</SelectItem>
+        <SelectItem value="12m">Last 12 months</SelectItem>
       </SelectContent>
     </Select>
   );
