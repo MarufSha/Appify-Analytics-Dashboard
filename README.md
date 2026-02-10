@@ -34,3 +34,44 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Tech Stack Used
+
+- Next.js (App Router) – Routing, layouts, and SSR
+- React 18
+- TypeScript
+- Tailwind CSS – Styling
+- shadcn/ui – Accessible UI components
+- Recharts – Charts and data visualization
+- Zustand – Global state management
+- next-themes – Dark/Light theme support
+- lucide-react – Icons
+
+## Architecture Decisions
+
+- App Router + Route Groups
+  Used route groups to isolate dashboard-related layouts and routes.
+
+- Feature-based folder structure
+  UI components, state, services, and utilities are organized by responsibility to improve scalability and maintainability.
+
+- Centralized state management (Zustand)
+  Filters, role selection, loading, and error states are managed globally to ensure consistent updates across KPIs and charts.
+
+- Derived view model pattern
+  Raw data is transformed into a computed dashboard view, keeping UI components simple and declarative.
+
+- Client-only theme toggle
+  Theme switching is isolated into a client-only component to avoid SSR hydration mismatches.
+
+## Assumptions Made
+
+- Mock data represents a realistic analytics API response.
+
+- Two roles exist: Admin (full access) and Manager (restricted access).
+
+- Supported date ranges are Last 7 days, Last 30 days, and Last 12 months.
+
+- CSV exports reflect the currently selected filters and role.
+
+- Data size is small-to-medium and suitable for client-side rendering.
