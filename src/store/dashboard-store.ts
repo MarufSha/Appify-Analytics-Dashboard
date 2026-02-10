@@ -36,14 +36,24 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     if (get().isLoading) return;
     set({ isLoading: true, error: null });
 
-    try {
-      const raw = await getDashboardData();
-      set({ raw, isLoading: false });
-    } catch (e) {
-      set({
-        error: e instanceof Error ? e.message : "Failed to load dashboard",
-        isLoading: false,
-      });
+    const maxAttempts = 3;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const raw = await getDashboardData();
+        set({ raw, isLoading: false, error: null });
+        return;
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : "Failed to load dashboard";
+
+        if (attempt === maxAttempts) {
+          set({ error: msg, isLoading: false });
+          return;
+        }
+
+        const wait = 250 * 2 ** (attempt - 1);
+        await new Promise((r) => setTimeout(r, wait));
+      }
     }
   },
 }));

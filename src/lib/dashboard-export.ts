@@ -19,17 +19,14 @@ function formatPercent(n: number) {
   return `${sign}${n.toFixed(1)}%`;
 }
 
-export function exportDashboardCsvBundle(args: {
-  baseName: string;
-  kpis: KpiView;
-  timeseries: TimePoint[];
-  userMix: BreakdownItem[];
-  traffic: TrafficItem[];
-  includeTraffic: boolean;
-}) {
-  const { baseName, kpis, timeseries, userMix, traffic, includeTraffic } = args;
+export type ExportSection =
+  | "kpis"
+  | "timeseries"
+  | "user-mix"
+  | "traffic-sources";
 
-  const kpiRows = [
+export function exportKpisCsv(filename: string, kpis: KpiView) {
+  const rows = [
     {
       metric: "Revenue",
       value: formatMoney(kpis.revenue.value),
@@ -60,33 +57,33 @@ export function exportDashboardCsvBundle(args: {
     },
   ];
 
-  const kpisCsv = toCsv(kpiRows);
-  downloadTextFile(`${baseName}_kpis.csv`, kpisCsv);
+  downloadTextFile(filename, toCsv(rows));
+}
 
-  const tsCsv = toCsv(
-    timeseries.map((p) => ({
-      date: p.date,
-      revenue: p.revenue,
-      orders: p.orders,
-    })),
-  );
-  downloadTextFile(`${baseName}_timeseries.csv`, tsCsv);
+export function exportTimeseriesCsv(filename: string, timeseries: TimePoint[]) {
+  const rows = timeseries.map((p) => ({
+    date: p.date,
+    revenue: p.revenue,
+    orders: p.orders,
+  }));
+  downloadTextFile(filename, toCsv(rows));
+}
 
-  const userCsv = toCsv(
-    userMix.map((u) => ({
-      type: u.type,
-      value: u.value,
-    })),
-  );
-  downloadTextFile(`${baseName}_user-mix.csv`, userCsv);
+export function exportUserMixCsv(filename: string, userMix: BreakdownItem[]) {
+  const rows = userMix.map((u) => ({
+    type: u.type,
+    value: u.value,
+  }));
+  downloadTextFile(filename, toCsv(rows));
+}
 
-  if (includeTraffic) {
-    const trafficCsv = toCsv(
-      traffic.map((t) => ({
-        source: t.source,
-        value: t.value,
-      })),
-    );
-    downloadTextFile(`${baseName}_traffic-sources.csv`, trafficCsv);
-  }
+export function exportTrafficSourcesCsv(
+  filename: string,
+  traffic: TrafficItem[],
+) {
+  const rows = traffic.map((t) => ({
+    source: t.source,
+    value: t.value,
+  }));
+  downloadTextFile(filename, toCsv(rows));
 }

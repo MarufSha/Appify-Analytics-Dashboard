@@ -1,6 +1,6 @@
 export function toCsv<T extends Record<string, unknown>>(
   rows: T[],
-  columns?: { key: keyof T; header: string }[]
+  columns?: { key: keyof T; header: string }[],
 ) {
   if (rows.length === 0) return "";
 

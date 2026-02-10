@@ -1,6 +1,8 @@
 "use client";
 
-import { Menu, Search, User } from "lucide-react";
+import { Menu, Search, User} from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/layout/sidebar";
@@ -24,19 +26,31 @@ import { useUiStore } from "@/store/ui-store";
 import type { RoleKey } from "@/types/dashboard";
 
 export default function Topbar() {
+  const ThemeToggle = dynamic(() => import("@/components/common/theme-toggle"), {
+  ssr: false,
+});
+  const router = useRouter();
+  const pathname = usePathname();
+  const sp = useSearchParams();
   const role = useUiStore((s) => s.role);
   const setRole = useUiStore((s) => s.setRole);
+  
+  useEffect(() => {
+    const q = sp.get("role");
+    if (q === "admin" || q === "manager") {
+      setRole(q);
+    }
+  }, []);
 
   function onRoleChange(v: string) {
-    setRole(v as RoleKey);
+    const next = v as RoleKey;
+    setRole(next);
+
+    const params = new URLSearchParams(sp.toString());
+    params.set("role", next);
+    router.replace(`${pathname}?${params.toString()}`);
   }
 
-  const ThemeToggle = dynamic(
-    () => import("@/components/common/theme-toggle"),
-    {
-      ssr: false,
-    },
-  );
   return (
     <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
       <div className="flex items-center gap-3 px-4 py-3 md:px-6">
@@ -47,16 +61,18 @@ export default function Topbar() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="p-0">
-            <div className="block md:hidden">
-              <Sidebar />
-            </div>
+            <Sidebar mode="mobile" />
           </SheetContent>
         </Sheet>
 
         <div className="flex-1">
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search" className="pl-9" disabled />
+            <Input
+              placeholder="Search (bonus feature later)"
+              className="pl-9"
+              disabled
+            />
           </div>
         </div>
         <div className="hidden md:block">

@@ -8,11 +8,20 @@ import { Separator } from "@/components/ui/separator";
 
 const nav = [{ label: "Dashboard", href: "/dashboard", icon: LayoutDashboard }];
 
-export default function Sidebar() {
+type SidebarProps = {
+  mode?: "desktop" | "mobile";
+};
+
+export default function Sidebar({ mode = "desktop" }: SidebarProps) {
   const pathname = usePathname();
 
+  const asideClass =
+    mode === "desktop"
+      ? "hidden w-64 border-r bg-card md:block"
+      : "w-64 border-r bg-card block";
+
   return (
-    <aside className="hidden w-64 border-r bg-card md:block">
+    <aside className={asideClass}>
       <div className="flex h-dvh flex-col">
         <div className="flex items-center gap-2 px-4 py-5">
           <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">
