@@ -1,9 +1,14 @@
 import { create } from "zustand";
-import type { DashboardData, DateRangeKey, UserTypeKey } from "@/types/dashboard";
+import type {
+  DashboardData,
+  DateRangeKey,
+  UserTypeKey,
+} from "@/types/dashboard";
 import { getDashboardData } from "@/services/dashboard-api";
+import { selectDashboardView } from "@/lib/dashboard-selectors";
 
 type DashboardState = {
-  data: DashboardData | null;
+  raw: DashboardData | null;
   isLoading: boolean;
   error: string | null;
 
@@ -17,7 +22,7 @@ type DashboardState = {
 };
 
 export const useDashboardStore = create<DashboardState>((set, get) => ({
-  data: null,
+  raw: null,
   isLoading: false,
   error: null,
 
@@ -32,8 +37,8 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const data = await getDashboardData();
-      set({ data, isLoading: false });
+      const raw = await getDashboardData();
+      set({ raw, isLoading: false });
     } catch (e) {
       set({
         error: e instanceof Error ? e.message : "Failed to load dashboard",
@@ -42,3 +47,12 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     }
   },
 }));
+
+export function useDashboardView() {
+  const raw = useDashboardStore((s) => s.raw);
+  const dateRange = useDashboardStore((s) => s.dateRange);
+  const userType = useDashboardStore((s) => s.userType);
+
+  if (!raw) return null;
+  return selectDashboardView(raw, dateRange, userType);
+}

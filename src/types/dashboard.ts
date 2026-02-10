@@ -2,13 +2,32 @@ export type Kpis = {
   revenue: number;
   orders: number;
   users: number;
-  conversionRate: number; 
+  conversionRate: number;
+};
+
+export type KpiDelta = {
+  value: number;
+  prevValue: number;
+  deltaPercent: number;
+  trend: "up" | "down" | "flat";
+};
+
+export type KpiView = {
+  revenue: KpiDelta;
+  orders: KpiDelta;
+  users: KpiDelta;
+  conversionRate: KpiDelta;
 };
 
 export type TimePoint = {
-  date: string; 
+  date: string;
   revenue: number;
   orders: number;
+
+  revenueNew?: number;
+  revenueReturning?: number;
+  ordersNew?: number;
+  ordersReturning?: number;
 };
 
 export type BreakdownItem = {
@@ -29,5 +48,5 @@ export type DashboardData = {
   trafficSources: TrafficItem[];
 };
 
-export type DateRangeKey = "7d" | "30d" | "90d";
+export type DateRangeKey = "7d" | "30d" | "12m";
 export type UserTypeKey = "all" | "new" | "returning";

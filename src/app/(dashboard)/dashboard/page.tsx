@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useDashboardStore } from "@/store/dashboard-store";
+import { useDashboardStore, useDashboardView } from "@/store/dashboard-store";
 
 import FilterBar from "@/components/dashboard/filters/filter-bar";
 import KpiGrid from "@/components/dashboard/kpis/kpi-grid";
@@ -15,7 +15,7 @@ import LoadingSkeleton from "@/components/common/loading-skeleton";
 import ErrorState from "@/components/common/error-state";
 import EmptyState from "@/components/common/empty-state";
 const Dashboard = () => {
-  const data = useDashboardStore((s) => s.data);
+  const view = useDashboardView();
   const isLoading = useDashboardStore((s) => s.isLoading);
   const error = useDashboardStore((s) => s.error);
   const fetchDashboard = useDashboardStore((s) => s.fetchDashboard);
@@ -26,22 +26,22 @@ const Dashboard = () => {
 
   if (isLoading) return <LoadingSkeleton />;
   if (error) return <ErrorState message={error} />;
-  if (!data) return <EmptyState />;
+  if (!view) return <EmptyState />;
 
   return (
     <div className="space-y-6">
       <FilterBar />
 
-      <KpiGrid kpis={data.kpis} />
+      <KpiGrid kpis={view.kpis} />
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <RevenueLineChart data={data.timeseries} />
-        <OrdersBarChart data={data.timeseries} />
+        <RevenueLineChart data={view.timeseries} />
+        <OrdersBarChart data={view.timeseries} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <UsersPieChart data={data.userBreakdown} />
-        <TrafficSourceChart data={data.trafficSources} />
+        <UsersPieChart data={view.userBreakdown} />
+        <TrafficSourceChart data={view.trafficSources} />
       </div>
     </div>
   );
